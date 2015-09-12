@@ -12,19 +12,19 @@ public class FunnyString {
             int i = 0, len, itr;
             System.out.println("Type your input!");
             testCase = sc.nextInt();
-            String[] str = new String[testCase];
-            String[] revStr = new String[testCase];
+            String str ;
+            String revStr;
 
             while (i != testCase) {
 
                 inputStr = scStr.nextLine();
-                str[i] = inputStr;
-                StringBuilder bufStr = new StringBuilder(str[i]);
-                revStr[i] = bufStr.reverse().toString();
-                len = str[i].length();
+                str = inputStr;
+                StringBuilder bufStr = new StringBuilder(str);
+                revStr = bufStr.reverse().toString();
+                len = str.length();
 
-                char[] strChar = str[i].toCharArray();
-                char[] revChar = revStr[i].toCharArray();
+                char[] strChar = str.toCharArray();
+                char[] revChar = revStr.toCharArray();
 
                 for (itr = 1; itr < len; itr++) {
                     if (Math.abs(strChar[itr] - strChar[itr - 1]) != Math.abs(revChar[itr] - revChar[itr - 1])) {
