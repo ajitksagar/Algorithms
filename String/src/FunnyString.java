@@ -1,42 +1,38 @@
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class FunnyString {
 
-    public static void main(String args[]) {
-        int testCase;
-        String inputStr;
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+
 
         try {
-            Scanner sc = new Scanner(System.in);
-            Scanner scStr = new Scanner(System.in);
-            int i = 0, len, itr;
-            System.out.println("Type your input!");
-            testCase = sc.nextInt();
-            String str ;
-            String revStr;
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            int testCase = Integer.parseInt(br.readLine());
+            int i = 0, itr;
 
-            while (i != testCase) {
+            while (i < testCase) {
 
-                inputStr = scStr.nextLine();
-                str = inputStr;
-                StringBuilder bufStr = new StringBuilder(str);
-                revStr = bufStr.reverse().toString();
-                len = str.length();
+                String inputStr = br.readLine();
 
-                char[] strChar = str.toCharArray();
-                char[] revChar = revStr.toCharArray();
+                char[] strChar = inputStr.toCharArray();
+                char[] revChar = new StringBuilder(inputStr).reverse().toString().toCharArray();
+                int length = inputStr.length();
 
-                for (itr = 1; itr < len; itr++) {
-                    if (Math.abs(strChar[itr] - strChar[itr - 1]) != Math.abs(revChar[itr] - revChar[itr - 1])) {
+                for (itr = 0; itr < length - 1; itr++) {
+                    if (Math.abs(strChar[itr + 1] - strChar[itr]) != Math.abs(revChar[itr + 1] - revChar[itr])) {
                         break;
                     }
                 }
-                if (itr == len)
+//                System.out.println("===========" + itr + " " + length);
+                if ((itr + 1 )== length)
                     System.out.println("Funny");
                 else
                     System.out.println("Not Funny");
                 i++;
             }
+            br.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
